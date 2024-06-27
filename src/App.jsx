@@ -9,18 +9,41 @@ import ContactUs from './components/ContactUs';
 import Login from './pages/Authentication/Login';
 import Product from './pages/Product/Product'
 import Register from './pages/Authentication/Register'
+import Lifecycle from './pages/Lifecycle/Lifecycle';
 
 class App extends React.Component{ // menambah extend react component karena react
+
+  state = {
+    page: <Lifecycle />
+  }
+  handlePages = (page) => {
+    // console.log("🚀 ~ App ~ event:", event)
+    this.setState({
+      page: page
+    })
+  }
+
+
+  
+
   render(){ // metode dari react component
     return (
       <>
 
-            
-      <Home />
-      <Register />
-      <Login />
-      <Product />
-      <Toasts />
+      {/* <Lifecycle /> */}
+      <button onClick={() => this.handlePages(<Lifecycle />)}>Show Lifecycle</button>
+        {/* <Home /> */}
+        <button onClick={() => this.setState({ page: <Home /> })}>Show Home</button>
+        {/* <Register /> */}
+        <button onClick={() => this.setState({ page: <Register /> })}>Show Register</button>
+        {/* <Login /> */}
+        <button onClick={() => this.setState({ page: <Login /> })}>Show Login</button>
+        {/* <Product /> */}
+        <button onClick={() => this.setState({ page: <Product /> })}>Show Product</button>
+        {/* <Toasts /> */}
+        <button onClick={() => this.setState({ page: <Toasts /> })}>Show Toasts</button>
+        {this.state.page}
+
       </>
     )
   }
